@@ -33,6 +33,8 @@ services:
       # - YT_CHANNEL_ID= # Set to the channel ID you want to listen to
       # - CHECK_FOR_LIVE_INTERVAL= # Set to the number of millis you want to sleep between live checks
     restart: on-failure
+    ports:
+      - 8082:8082
   twitch:
     image: "streamcore-twitch"
     depends_on:
@@ -45,16 +47,16 @@ services:
       - EXCHANGE_NAME=chat
       - CHANNEL_USERNAME=exlted # Set to the Twitch Username you want to listen to
     restart: on-failure
-  trovo:
-    image: "ghcr.io/exlted/streamcore-chat-trovo"
-    depends_on:
-      - rabbit-mq
-    environment:
-      - AMPQ_HOST=rabbit-mq
-      - AMPQ_PORT=5672
-      - AMPQ_USERNAME=guest
-      - AMPQ_PASSWORD=guest
-      - EXCHANGE_NAME=chat
-      #- CLIENT_ID= # Provide a Trovo API key to allow Trovo API Access
-      #- CHANNEL_USERNAME= # Set to the Trovo Username you want to listen to
-    restart: on-failure
+  #trovo:
+  #  image: "ghcr.io/exlted/streamcore-chat-trovo"
+  #  depends_on:
+  #    - rabbit-mq
+  #  environment:
+  #    - AMPQ_HOST=rabbit-mq
+  #    - AMPQ_PORT=5672
+  #    - AMPQ_USERNAME=guest
+  #    - AMPQ_PASSWORD=guest
+  #    - EXCHANGE_NAME=chat
+  #    #- CLIENT_ID= # Provide a Trovo API key to allow Trovo API Access
+  #    #- CHANNEL_USERNAME= # Set to the Trovo Username you want to listen to
+  #  restart: on-failure
