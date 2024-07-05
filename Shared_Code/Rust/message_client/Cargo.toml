@@ -1,6 +1,6 @@
 [package]
 name = "streamcore_message_client"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["exlted <exltedofdrg@gmail.com>"]
 edition = "2021"
 license = "MIT"
